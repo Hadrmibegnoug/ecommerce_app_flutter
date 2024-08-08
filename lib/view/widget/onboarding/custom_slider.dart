@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import '../../../core/constant/color.dart';
 import '../../../data/datasource/static/static.dart';
 
 class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
@@ -17,15 +19,18 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
               children: [
                 Image.asset(
                   onBoardingList[i].imgUrl!,
-                  width: 200,
-                  height: 230,
+                  // width: 200,
+                  height: Get.width / 1.4,
                   fit: BoxFit.fill,
                 ),
                 const SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 Text(onBoardingList[i].title!,
-                    style: Theme.of(context).textTheme.headlineLarge),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: AppColor.black)),
                 const SizedBox(
                   height: 20,
                 ),
@@ -35,7 +40,12 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
                   child: Text(
                     onBoardingList[i].body!,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: const TextStyle(
+                      height: 2,
+                      color: AppColor.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 )
               ],

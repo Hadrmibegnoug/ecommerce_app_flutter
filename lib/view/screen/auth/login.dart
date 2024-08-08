@@ -1,15 +1,21 @@
+import 'package:ecommerce_app/controller/auth/login_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/core/functions/validinput.dart';
+import 'package:ecommerce_app/view/widget/auth/custom_auth_button.dart';
+import 'package:ecommerce_app/view/widget/auth/custom_signup_text.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_Form.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_text_body_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/custom_title_auth.dart';
 import 'package:ecommerce_app/view/widget/auth/logo_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LoginControllerImp controller = Get.put(LoginControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,28 +29,60 @@ class Login extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: ListView(
-          children: const [
-            LogoAuth(),
-            CustomTitleAuth(text: "Welcome Back"),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextBodyAuth(
-                body:
-                    "Sign In With Your Email And Password OR Continue With Social Media."),
-            SizedBox(
-              height: 15,
-            ),
-            CustomTextForm(
-                hintText: "Enter Your Email",
-                label: "Email",
-                icon: Icons.email_outlined),
-            CustomTextForm(
-                hintText: "Enter Your Password",
-                label: "Password",
-                icon: Icons.lock_outline)
-          ],
+        child: Form(
+          key: controller.formstate,
+          child: ListView(
+            children: [
+              const LogoAuth(),
+              CustomTitleAuth(text: "10".tr),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextBodyAuth(body: "11".tr),
+              const SizedBox(
+                height: 15,
+              ),
+              CustomTextForm(
+                  valid: (val) {
+                    validInput(val!, 5, 100, "email");
+                  },
+                  myController: controller.email,
+                  hintText: "12".tr,
+                  label: "18".tr,
+                  icon: Icons.email_outlined),
+              CustomTextForm(
+                  valid: (val) {
+                    validInput(val!, 5, 30, "password");
+                  },
+                  myController: controller.password,
+                  hintText: "13".tr,
+                  label: "19".tr,
+                  icon: Icons.lock_outline),
+              InkWell(
+                onTap: () {
+                  controller.goToForgetPassword();
+                },
+                child: Text(
+                  "14".tr,
+                  textAlign: TextAlign.end,
+                ),
+              ),
+              CustomAuthButton(
+                  text: "Sign In",
+                  onPressed: () {
+                    controller.login();
+                  }),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomSignupText(
+                  textOne: '16'.tr,
+                  textTwo: '17'.tr,
+                  onTap: () {
+                    controller.goToSignUp();
+                  })
+            ],
+          ),
         ),
       ),
     );
