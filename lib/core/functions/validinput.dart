@@ -2,17 +2,17 @@ import 'package:get/get.dart';
 
 validInput(String val, int min, int max, String type) {
   if (type == "email") {
-    if (GetUtils.isEmail(val)) {
+    if (!GetUtils.isEmail(val)) {
       return "not valid email";
     }
   }
   if (type == "username") {
-    if (GetUtils.isUsername(val)) {
+    if (!GetUtils.isUsername(val)) {
       return "Not valid username";
     }
   }
   if (type == "phone") {
-    if (GetUtils.isPhoneNumber(val)) {
+    if (!GetUtils.isPhoneNumber(val)) {
       return "Not valid phone number";
     }
   }

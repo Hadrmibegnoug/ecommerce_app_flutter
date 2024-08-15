@@ -4,8 +4,7 @@ import 'package:ecommerce_app/routes.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'core/constant/color.dart';
+import 'binding.dart';
 import 'core/services/services.dart';
 
 void main() async {
@@ -26,8 +25,10 @@ class MyApp extends StatelessWidget {
       title: 'Ecommerce App',
       locale: controller.language,
       theme: controller.themeApp,
-      home: const Language(),
-      routes: routes,
+      initialBinding: Binding(),
+      // home: const Language(),
+      // routes: routes,
+      getPages: routes,
     );
   }
 }

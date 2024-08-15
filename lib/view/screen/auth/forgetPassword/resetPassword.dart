@@ -40,12 +40,14 @@ class Resetpassword extends StatelessWidget {
               height: 15,
             ),
             CustomTextForm(
+                isNumber: false,
                 valid: (val) {},
                 myController: controller.password,
                 hintText: "Enter Your Password",
                 label: "Password",
                 icon: Icons.lock_outline),
             CustomTextForm(
+                isNumber: false,
                 valid: (val) {},
                 myController: controller.repassword,
                 hintText: "Confirm Your Password",

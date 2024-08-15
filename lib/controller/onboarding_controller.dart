@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/constant/routes.dart';
+import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/static/static.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,8 @@ class OnBoardingControllerImp extends OnboardingController {
 
   int currentPage = 0;
 
+  MyServices myServices = Get.find();
+
   @override
   OnPageChanged(int index) {
     currentPage = index;
@@ -24,6 +27,7 @@ class OnBoardingControllerImp extends OnboardingController {
   next() {
     currentPage++;
     if (currentPage > onBoardingList.length - 1) {
+      myServices.sharedPreferences.setString("onboarding", "1");
       Get.toNamed(AppRoutes.login);
     } else {
       pageController.animateToPage(currentPage,

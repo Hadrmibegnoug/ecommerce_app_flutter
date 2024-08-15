@@ -11,10 +11,17 @@ abstract class LoginController extends GetxController {
 class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
+  bool isShowPass = true;
+
+  showPassword() {
+    isShowPass = isShowPass == true ? false : true;
+    update();
+  }
+
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   @override
   goToSignUp() {
-    Get.toNamed(AppRoutes.signUp);
+    Get.offNamed(AppRoutes.signUp);
   }
 
   @override

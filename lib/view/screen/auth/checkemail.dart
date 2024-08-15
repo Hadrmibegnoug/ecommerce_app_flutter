@@ -40,6 +40,7 @@ class CheckEmail extends StatelessWidget {
               height: 15,
             ),
             CustomTextForm(
+                isNumber: false,
                 valid: (val) {},
                 myController: controller.email,
                 hintText: "12".tr,

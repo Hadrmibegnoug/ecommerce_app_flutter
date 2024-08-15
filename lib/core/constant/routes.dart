@@ -10,5 +10,5 @@ class AppRoutes {
   static const String checkEmail = "/cheickemail";
   static const String verifyCodeSignUp = "/verifycodesignup";
   //OnBoarding
-  static const String onBoarding = "onBoarding";
+  static const String onBoarding = "/onBoarding";
 }
